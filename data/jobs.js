@@ -7,6 +7,18 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: "SDE-2 (Full Stack/Backend)",
+        company: "InsuranceDekho",
+        apply_link: "https://docs.google.com/forms/d/e/1FAIpQLSdTqkg-02UWWylKn6vdyZTyMH4Mdzj6o_kBnVjT501LetjXbA/viewform",
+        tags: []
+    },
+    {
+        role: "SDE-1 (Full Stack/Backend)",
+        company: "InsuranceDekho",
+        apply_link: "https://docs.google.com/forms/d/e/1FAIpQLSdTqkg-02UWWylKn6vdyZTyMH4Mdzj6o_kBnVjT501LetjXbA/viewform",
+        tags: []
+    },
+    {
         role: "Frontend Engineer",
         company: "Virtualitics",
         apply_link: "https://remote.co/job/frontend-engineer-23-2/",
