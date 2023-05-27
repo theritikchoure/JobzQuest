@@ -7,6 +7,12 @@ const internshipsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // }, 
     {
+        role: "Software Engineering Intern",
+        company: "aiXplain",
+        apply_link: "https://aixplain.rippling-ats.com/job/617279/software-engineering-intern-ai-backend?s=lif",
+        tags: ["Javascript", "Python", "SQL", "NoSQL"]
+    },
+    {
         role: "Frontend developer intern (1 position)",
         company: "HUBX",
         apply_link: "https://docs.google.com/forms/d/e/1FAIpQLSdbjnMdnT_ErVkveO_pPN2KBuZ5LwToENJKoI1XSDhEgvlHQg/viewform",
