@@ -1,5 +1,11 @@
 const internshipsData = [
     {
+        role: "Frontend developer intern (1 position)",
+        company: "HUBX",
+        apply_link: "https://docs.google.com/forms/d/e/1FAIpQLSdbjnMdnT_ErVkveO_pPN2KBuZ5LwToENJKoI1XSDhEgvlHQg/viewform",
+        tags: ["ReactJs", "Tailwind CSS"]
+    },
+    {
         role: "Software Developer Internship",
         company: "Economize, Inc.",
         apply_link: "https://cuvette.tech/app/public/internship/647053a726cfdfe111c23615?referralCode=JT26WF",
