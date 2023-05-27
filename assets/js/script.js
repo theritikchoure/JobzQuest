@@ -44,7 +44,7 @@ const jobsContentHtml = (job, id) => {
 
 window.onload = () => {
     let contentType = localStorage.getItem('content');
-    changeContent(contentType === 'null' ? 'jobs' : contentType);
+    changeContent(contentType);
 }
 
 const changeContent = (type = 'jobs') => {
@@ -60,22 +60,22 @@ const changeContent = (type = 'jobs') => {
         cards[i].remove();
     }
 
-    if(type === 'jobs') {
-        console.log(type)
-        let str = '';
-        let id = jobsData.length;
-    
-        jobsData.forEach((job) => {
-            str += jobsContentHtml(job, id--);
-        })
-    
-        listings.insertAdjacentHTML( 'beforeend', str );
-    } else if(type === 'internships') {
+    if(type === 'internships') {
         console.log(type)
         let str = '';
         let id = internshipsData.length;
 
         internshipsData.forEach((job) => {
+            str += jobsContentHtml(job, id--);
+        })
+    
+        listings.insertAdjacentHTML( 'beforeend', str );
+    } else {
+        console.log(type)
+        let str = '';
+        let id = jobsData.length;
+    
+        jobsData.forEach((job) => {
             str += jobsContentHtml(job, id--);
         })
     
