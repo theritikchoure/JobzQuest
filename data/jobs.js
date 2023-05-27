@@ -1,4 +1,11 @@
 const jobsData = [
+    // Don't remove this object, only capy and paste below it
+    // {
+    //     role: "Job title",
+    //     company: "Company name",
+    //     apply_link: "https://apply.link",
+    //     tags: ["Skill1", "skill2", "Skill3"]
+    // },
     {
         role: "Software Developer Job",
         company: "QuickMove Technologies Pvt. Ltd ",

@@ -1,4 +1,11 @@
 const internshipsData = [
+    // Don't remove this object, only capy and paste below it
+    // {
+    //     role: "Job title",
+    //     company: "Company name",
+    //     apply_link: "https://apply.link",
+    //     tags: ["Skill1", "skill2", "Skill3"]
+    // }, 
     {
         role: "Frontend developer intern (1 position)",
         company: "HUBX",
