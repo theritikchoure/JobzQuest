@@ -27,9 +27,10 @@
         }
     </script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./data/jobs.js"></script>
+    <script src="./data/internships.js"></script>
 </head>
 
 <body>
@@ -49,18 +50,25 @@
                 <p class="mb-6 text-base font-thin tracking-wide text-gray-300 md:text-lg">
                     Unlocking Endless Opportunities for Your Career
                 </p>
-                <form class="flex flex-col items-center w-full mb-8 md:flex-row md:px-16 md:mb-14" method="POST"
+                <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16 md:mb-10" method="POST"
                     action="https://1dd5c8e3.sibforms.com/serve/MUIEADqCkO3gzEo8l8twBMMMh2ZOfGE5qohF1rfBV-uOIJi78xV02f6uPFmJETC1aVErVaZ-r8HyUliBZdev4cwhntU9txrvEkVurE3bz8N0Ih6kyyRLRosc3dBztydeRS6Q26pP5141hVTQVnRaGJieDCIhaDVkKEpqhk0w8ag6KARyuoj6fJxLzgO8weE2Bn0H0X6HajnEuobz">
-                    <input placeholder="Email" required
-                    type="text" id="EMAIL" name="EMAIL"
-                                                        autocomplete="off" placeholder="EMAIL" data-required="true"
+                    <input placeholder="Email" required type="text" id="EMAIL" name="EMAIL" autocomplete="off"
+                        placeholder="EMAIL" data-required="true"
                         class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 bg-transparent border-2 border-gray-400 rounded appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-200 focus:outline-none focus:shadow-outline" />
                     <button type="submit"
                         class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none">
                         Subscribe
                     </button>
                 </form>
-                <a href="#jobs" aria-label="Scroll down"
+                <button class="inline-flex items-center justify-center mb-4 md:mb-14 md:mr-4 w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-transparent hover:bg-purple-700 focus:shadow-outline focus:outline-none cursor-pointer
+                    border border-gray-400 hover:border-0" onclick="changeContent('jobs')" id="job-btn">
+                    Jobs
+                </button>
+                <button class="inline-flex items-center justify-center mb-4 md:mb-14 md:mr-4 w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-transparent hover:bg-purple-700 focus:shadow-outline focus:outline-none cursor-pointer
+                border border-gray-400 hover:border-0" onclick="changeContent('internships')" id="internship-btn">
+                    Internships
+                </button>
+                <a href="#listings" aria-label="Scroll down"
                     class="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
                         fill="currentColor">
@@ -73,8 +81,9 @@
         </div>
     </div>
 
-    <div class="main px-5 py-5 lg:py-16 lg:px-56" id="jobs">
-
+    <div class="main px-5 py-5 lg:py-16 lg:px-56" id="listings">
+        <h2 class="text-center text-4xl mb-10">Latest Jobs</h2>
+        <div class="loader hidden flex items-center justify-center mx-auto" id="loader"></div>
     </div>
 
     <script src="./assets/js/script.js"></script>

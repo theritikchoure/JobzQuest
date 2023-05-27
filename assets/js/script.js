@@ -6,11 +6,10 @@ function randColor() {
     return randHex() + "" + randHex() + "" + randHex();
 }
 
-const jobsContentHtml = (job) => {
+const jobsContentHtml = (job, id) => {
     let tags = '';
 
     job.tags.forEach(tag => {
-        console.log(tags)
         let tagBtn = `<button
         class="bg-transparent mb-2 mr-1 hover:bg-black text-xs text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded-full">
         ${tag}
@@ -19,7 +18,7 @@ const jobsContentHtml = (job) => {
         tags += tagBtn;
     })
 
-    let content = `<div class="card shadow py-5 bg-yellow-300 rounded-xl my-5" style='background:#${randColor()}'>
+    let content = `<div class="card shadow py-5 bg-yellow-300 rounded-xl my-5" style='background:#${randColor()}' id=${id}>
     <div class="row">
         <div class="column pl-9">
             <h2 class="text-xl font-semibold">${job.role}</h2>
@@ -44,13 +43,44 @@ const jobsContentHtml = (job) => {
 
 
 window.onload = () => {
-    let jobDiv = document.getElementById("jobs");
+    let contentType = localStorage.getItem('content');
+    changeContent(contentType);
+}
 
-    let str = '';
+const changeContent = (type = 'jobs') => {
+    localStorage.setItem('content', type);
+    let listings = document.getElementById("listings");
+    let loader = document.getElementById("loader");
 
-    jobsData.forEach((job) => {
-        str += jobsContentHtml(job);
-    })
+    loader.classList.toggle('hidden'); // loading starts
 
-    jobDiv.insertAdjacentHTML( 'beforeend', str );
+    // Remove all other listings before changing content 
+    let cards = document.querySelectorAll(".card"); // existing cards
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].remove();
+    }
+
+    if(type === 'jobs') {
+        console.log(type)
+        let str = '';
+        let id = jobsData.length;
+    
+        jobsData.forEach((job) => {
+            str += jobsContentHtml(job, id--);
+        })
+    
+        listings.insertAdjacentHTML( 'beforeend', str );
+    } else if(type === 'internships') {
+        console.log(type)
+        let str = '';
+        let id = internshipsData.length;
+
+        internshipsData.forEach((job) => {
+            str += jobsContentHtml(job, id--);
+        })
+    
+        listings.insertAdjacentHTML( 'beforeend', str );
+    }
+
+    loader.classList.toggle('hidden');
 }

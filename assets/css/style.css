@@ -1,0 +1,101 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Create four equal columns that floats next to each other */
+.column,
+.column-first {
+    float: left;
+    padding: 10px;
+    height: auto;
+    /* Should be removed. Only for demonstration */
+}
+
+.column {
+    width: 42.5%;
+}
+
+.column-10 {
+    width: 10% !important;
+}
+
+.column-first {
+    width: 15% !important;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #000;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+.active-btn {
+    background-color: #7e22ce!important;
+    border: none;
+    border-radius: 0.25rem;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .column,
+    .column-first,
+    .column-10 {
+        width: 100% !important;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    /* .column,
+    .column-first,
+    .column-10 {
+        width: 100% !important;
+    } */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
