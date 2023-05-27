@@ -44,7 +44,7 @@ const jobsContentHtml = (job, id) => {
 
 window.onload = () => {
     let contentType = localStorage.getItem('content');
-    changeContent(contentType === null ? 'jobs' : contentType);
+    changeContent(contentType === 'null' ? 'jobs' : contentType);
 }
 
 const changeContent = (type = 'jobs') => {
