@@ -51,6 +51,12 @@ html {
     border-radius: 0.25rem;
 }
 
+#btn-back-to-top {
+    position: fixed;
+    display: none;
+}
+
+
 /* Safari */
 @-webkit-keyframes spin {
     0% {

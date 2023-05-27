@@ -1,0 +1,14 @@
+{
+    "name": "JobzQuest",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#0d085c",
+    "icons": [
+        {
+            "src": "/assets/image/logo.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any maskable"
+        }
+    ]
+}
