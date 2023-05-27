@@ -7,6 +7,18 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: "Frontend Engineer",
+        company: "Virtualitics",
+        apply_link: "https://remote.co/job/frontend-engineer-23-2/",
+        tags: ["Javascript", "TypeScript", "CSS", "HTML", "React", "Redux"]
+    },
+    {
+        role: "Software Engineer",
+        company: "Getty Images",
+        apply_link: "https://jobs.lever.co/gettyimages/c18bb54b-b7fc-4952-a875-423f8fade22c/",
+        tags: ["APS.NET", "Javascript", "AWS", "Tableau"]
+    },
+    {
         role: "Software Developer Job",
         company: "QuickMove Technologies Pvt. Ltd ",
         apply_link: "https://cuvette.tech/app/public/job/646f34af6ae5944699a24bc4?referralCode=JT26WF",
