@@ -59,6 +59,8 @@ window.onload = () => {
 const changeContent = (type = 'jobs') => {
     localStorage.setItem('content', type);
     let listings = document.getElementById("listings");
+    let listingHeading = document.getElementById("listing-heading");
+
     let loader = document.getElementById("loader");
 
     loader.classList.toggle('hidden'); // loading starts
@@ -79,6 +81,7 @@ const changeContent = (type = 'jobs') => {
         })
     
         listings.insertAdjacentHTML( 'beforeend', str );
+        listingHeading.innerText = 'Latest Internships';
     } else {
         console.log(type)
         let str = '';
@@ -89,6 +92,7 @@ const changeContent = (type = 'jobs') => {
         })
     
         listings.insertAdjacentHTML( 'beforeend', str );
+        listingHeading.innerText = 'Latest Jobs';
     }
 
     loader.classList.toggle('hidden');
