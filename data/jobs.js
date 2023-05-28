@@ -7,6 +7,12 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: "DevOps Engineer",
+        company: "Delhivery",
+        apply_link: "https://delhivery.darwinbox.in/ms/candidate/careers/a645a06100b757",
+        tags: ["Python", "Shell", "Go lang", "CI/CD", "AWS"]
+    },
+    {
         role: "SDE-2 (Full Stack/Backend)",
         company: "InsuranceDekho",
         apply_link: "https://docs.google.com/forms/d/e/1FAIpQLSdTqkg-02UWWylKn6vdyZTyMH4Mdzj6o_kBnVjT501LetjXbA/viewform",
