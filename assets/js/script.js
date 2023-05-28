@@ -40,11 +40,19 @@ const jobsContentHtml = (job, id) => {
     return content;
 } 
 
+let cookieModal = document.getElementById('cookie-modal');
+let cookieBtn = document.getElementById('cookie-accept');
 
 
 window.onload = () => {
     let contentType = localStorage.getItem('content');
     changeContent(contentType);
+
+    let cookieConsent = localStorage.getItem('cookie-accept');
+    if(JSON.parse(cookieConsent)) {
+        console.log("first")
+        cookieModal.classList.add('hidden');
+    }
 }
 
 const changeContent = (type = 'jobs') => {
@@ -83,6 +91,11 @@ const changeContent = (type = 'jobs') => {
     }
 
     loader.classList.toggle('hidden');
+}
+
+cookieBtn.onclick = function() {
+    localStorage.setItem('cookie-accept', true);
+    cookieModal.classList.add('hidden');
 }
 
 let mybutton = document.getElementById("btn-back-to-top");
