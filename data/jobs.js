@@ -7,6 +7,12 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: "SDE I - Frontend",
+        company: "Netomi",
+        apply_link: "https://jobs.lever.co/netomi/193837bd-9cb4-4518-83f8-d59c02e7b960",
+        tags: ["Javascript", "Typescript", "HTML5", "CSS3", "VueJs/ReactJs/AngularJs"]
+    },
+    {
         role: "DevOps Engineer",
         company: "Delhivery",
         apply_link: "https://delhivery.darwinbox.in/ms/candidate/careers/a645a06100b757",
