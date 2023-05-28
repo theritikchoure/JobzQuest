@@ -33,6 +33,7 @@ const jobsContentHtml = (job, id) => {
                 class="bg-red-400 hover:bg-red-500 shadow text-white font-bold py-2 px-8 rounded cursor-pointer">
                 Apply
             </a>
+            <p class="text-base mt-2">${job.posted_date}</p>
         </div>
     </div>
     </div>`;
