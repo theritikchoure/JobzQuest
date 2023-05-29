@@ -42,14 +42,21 @@ const jobsContentHtml = (job, id) => {
         </div>
     </div>
     </div>
-    <div class="card flex flex-col items-center justify-center shadow py-2 bg-transparent">
+    <div class="card flex items-center justify-center shadow py-2 bg-transparent">
         <a rel="noopener noreferrer" href='https://twitter.com/intent/tweet?text=Role%20-%20${job.role}%0ACompany%20-%20${job.company}%0ACheck%20out%20-%20https%3A%2F%2Ftheritikchoure.github.io%2FJobzQuest%2F%23${contentType}-${id}' target="_blank"
-            title="Share on twitter" class="flex items-center p-1">
+            title="Share on twitter" class="items-center p-1">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current">
                 <path
                     d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z">
                 </path>
             </svg>
+        </a>
+        <a onclick="copyToClipboard('https://theritikchoure.github.io/JobzQuest/#${contentType}-${id}')"
+            title="Copy link" twitter" class="items-center p-1 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M9 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V15"></path>
+            </svg>    
         </a>
     </div>
     </div>`;
@@ -61,13 +68,13 @@ let cookieModal = document.getElementById('cookie-modal');
 let cookieBtn = document.getElementById('cookie-accept');
 
 
-window.onload = async() => {
+window.onload = async () => {
     let contentType = localStorage.getItem('content');
 
-    if(location.hash !== '') {
+    if (location.hash !== '') {
         contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
     }
-    
+
     await changeContent(contentType);
 
     let cookieConsent = localStorage.getItem('cookie-accept');
@@ -75,7 +82,7 @@ window.onload = async() => {
         cookieModal.classList.add('hidden');
     }
 
-    if(location.hash !== '') {
+    if (location.hash !== '') {
         document.getElementById(location.hash.replace('#', '')).scrollIntoView();
         // const myDiv = document.getElementById('myDiv');
         // myDiv.scrollIntoView();
@@ -153,4 +160,9 @@ mybutton.addEventListener("click", backToTop);
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+}
+
+async function copyToClipboard(text) {
+    await navigator.clipboard.writeText(text);
+    alert("Copied to clipboard")
 }
