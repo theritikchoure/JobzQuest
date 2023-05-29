@@ -7,6 +7,13 @@ const internshipsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // }, 
     {
+        role: 'UI Design & React UI Developer (Intern)',
+        company: 'IIT Bombay',
+        tags: ['HTML', 'CSS', 'Bootstrap', 'Javascript', 'React.js'],
+        apply_link: 'https://www.linkedin.com/jobs/view/3617717080/',
+        posted_date: "29/05/2023",
+    },
+    {
         role: 'Frontend Developer Intern',
         company: 'VILS AIT',
         tags: ['HTML', 'CSS', 'Git', 'Bootstrap', 'React.js'],
