@@ -22,8 +22,8 @@ const jobsContentHtml = (job, id) => {
         tags += tagBtn;
     })
 
-    let content = `<div class="main-card shadow border border-gray-900 my-5 rounded-lg">
-    <div class="card shadow py-5 rounded-t-lg rounded-l-none  border-b-0" style='background:#${randColor()}' id=${contentType}-${id}>
+    let content = `<div class="main-card shadow border border-gray-900 my-5 rounded-lg" id=${contentType}-${id}>
+    <div class="card shadow py-5 rounded-t-lg rounded-l-none  border-b-0" style='background:#${randColor()}'>
     <div class="row">
         <div class="column pl-9">
             <h2 class="text-xl font-semibold">${job.role}</h2>
@@ -61,27 +61,29 @@ let cookieModal = document.getElementById('cookie-modal');
 let cookieBtn = document.getElementById('cookie-accept');
 
 
-window.onload = () => {
+window.onload = async() => {
     let contentType = localStorage.getItem('content');
 
     if(location.hash !== '') {
         contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
     }
     
-    changeContent(contentType);
+    await changeContent(contentType);
 
     let cookieConsent = localStorage.getItem('cookie-accept');
     if (JSON.parse(cookieConsent)) {
-        console.log("first")
         cookieModal.classList.add('hidden');
     }
 
     if(location.hash !== '') {
-        document.getElementById(location.hash.replace('#', '')).scrollTop();
+        document.getElementById(location.hash.replace('#', '')).scrollIntoView();
+        // const myDiv = document.getElementById('myDiv');
+        // myDiv.scrollIntoView();
+        console.log(document.getElementById(location.hash.replace('#', '')))
     }
 }
 
-const changeContent = (type = 'jobs') => {
+const changeContent = async (type = 'jobs') => {
     localStorage.setItem('content', type);
     let listings = document.getElementById("listings");
     let listingHeading = document.getElementById("listing-heading");
