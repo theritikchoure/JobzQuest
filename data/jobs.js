@@ -7,6 +7,13 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Software Engineer',
+        company: 'Clearfeed',
+        tags: ['Javascript', 'Nodejs', 'Typescript', 'SQL/NoSQL', 'NestJs', 'ExpressJs', 'DSA', 'Cloud'],
+        apply_link: 'https://clearfeed.freshteam.com/jobs/krp7Czs9Hfdm/software-engineer',
+        posted_date: "29/05/2023",
+    },
+    {
         role: 'Frontend Developer',
         company: 'Aditadv Tech Pvt Ltd',
         tags: ['HTML5', 'CSS3', 'JavaScript', 'jQuery'],
