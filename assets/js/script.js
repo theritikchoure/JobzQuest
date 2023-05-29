@@ -7,6 +7,10 @@ function randColor() {
 }
 
 const jobsContentHtml = (job, id) => {
+    let contentType = localStorage.getItem('content');
+
+    contentType = contentType === 'internships' ? 'internship' : 'job';
+
     let tags = '';
 
     job.tags.forEach(tag => {
@@ -18,7 +22,8 @@ const jobsContentHtml = (job, id) => {
         tags += tagBtn;
     })
 
-    let content = `<div class="card shadow py-5 bg-yellow-300 rounded-xl my-5" style='background:#${randColor()}' id=${id}>
+    let content = `<div class="main-card shadow border border-gray-900 my-5 rounded-lg">
+    <div class="card shadow py-5 rounded-t-lg rounded-l-none  border-b-0" style='background:#${randColor()}' id=${contentType}-${id}>
     <div class="row">
         <div class="column pl-9">
             <h2 class="text-xl font-semibold">${job.role}</h2>
@@ -36,10 +41,21 @@ const jobsContentHtml = (job, id) => {
             <p class="text-base mt-2">${job.posted_date}</p>
         </div>
     </div>
+    </div>
+    <div class="card flex flex-col items-center justify-center shadow py-2 bg-transparent">
+        <a rel="noopener noreferrer" href='https://twitter.com/intent/tweet?text=Role%20-%20${job.role}%0ACompany%20-%20${job.company}%0ACheck%20out%20-%20https%3A%2F%2Ftheritikchoure.github.io%2FJobzQuest%2F%23${contentType}-${id}' target="_blank"
+            title="Share on twitter" class="flex items-center p-1">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current">
+                <path
+                    d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z">
+                </path>
+            </svg>
+        </a>
+    </div>
     </div>`;
 
     return content;
-} 
+}
 
 let cookieModal = document.getElementById('cookie-modal');
 let cookieBtn = document.getElementById('cookie-accept');
@@ -47,12 +63,21 @@ let cookieBtn = document.getElementById('cookie-accept');
 
 window.onload = () => {
     let contentType = localStorage.getItem('content');
+
+    if(location.hash !== '') {
+        contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
+    }
+    
     changeContent(contentType);
 
     let cookieConsent = localStorage.getItem('cookie-accept');
-    if(JSON.parse(cookieConsent)) {
+    if (JSON.parse(cookieConsent)) {
         console.log("first")
         cookieModal.classList.add('hidden');
+    }
+
+    if(location.hash !== '') {
+        document.getElementById(location.hash.replace('#', '')).scrollIntoView();
     }
 }
 
@@ -71,7 +96,7 @@ const changeContent = (type = 'jobs') => {
         cards[i].remove();
     }
 
-    if(type === 'internships') {
+    if (type === 'internships') {
         console.log(type)
         let str = '';
         let id = internshipsData.length;
@@ -79,26 +104,26 @@ const changeContent = (type = 'jobs') => {
         internshipsData.forEach((job) => {
             str += jobsContentHtml(job, id--);
         })
-    
-        listings.insertAdjacentHTML( 'beforeend', str );
+
+        listings.insertAdjacentHTML('beforeend', str);
         listingHeading.innerText = 'Latest Internships';
     } else {
         console.log(type)
         let str = '';
         let id = jobsData.length;
-    
+
         jobsData.forEach((job) => {
             str += jobsContentHtml(job, id--);
         })
-    
-        listings.insertAdjacentHTML( 'beforeend', str );
+
+        listings.insertAdjacentHTML('beforeend', str);
         listingHeading.innerText = 'Latest Jobs';
     }
 
     loader.classList.toggle('hidden');
 }
 
-cookieBtn.onclick = function() {
+cookieBtn.onclick = function () {
     localStorage.setItem('cookie-accept', true);
     cookieModal.classList.add('hidden');
 }
