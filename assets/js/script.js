@@ -93,7 +93,7 @@ const changeContent = async (type = 'jobs') => {
     loader.classList.toggle('hidden'); // loading starts
 
     // Remove all other listings before changing content 
-    let cards = document.querySelectorAll(".card"); // existing cards
+    let cards = document.querySelectorAll(".main-card"); // existing cards
     for (let i = 0; i < cards.length; i++) {
         cards[i].remove();
     }
