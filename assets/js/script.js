@@ -77,7 +77,7 @@ window.onload = () => {
     }
 
     if(location.hash !== '') {
-        document.getElementById(location.hash.replace('#', '')).scrollTo();
+        document.getElementById(location.hash.replace('#', '')).scrollTop();
     }
 }
 
