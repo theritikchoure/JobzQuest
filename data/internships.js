@@ -7,6 +7,13 @@ const internshipsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // }, 
     {
+        role: 'Associate Quality Engineer (Intern)',
+        company: 'Finastra',
+        tags: ['Java', 'Python', 'SQL'],
+        apply_link: 'https://careers.finastra.com/jobs/8257',
+        posted_date: "30/05/2023",
+    },
+    {
         role: 'UI Design & React UI Developer (Intern)',
         company: 'IIT Bombay',
         tags: ['HTML', 'CSS', 'Bootstrap', 'Javascript', 'React.js'],
