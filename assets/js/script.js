@@ -92,6 +92,8 @@ window.onload = async () => {
 
 const changeContent = async (type = 'jobs') => {
     localStorage.setItem('content', type);
+    let formPreference = document.getElementById('PREFERENCE');
+    formPreference.value = type === 'internships' ? '2' : '1';
     let listings = document.getElementById("listings");
     let listingHeading = document.getElementById("listing-heading");
 
