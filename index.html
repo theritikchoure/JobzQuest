@@ -14,7 +14,8 @@
         content="jobzquest, jobz quest, jobs quest, jobs for software engineers, jobs for software developers">
     <meta name="robots" content="index, follow">
 
-    <meta property="og:title" content="Jobz Quest - Unlocking Endless Opportunities for Software Engineers/Developers" />
+    <meta property="og:title"
+        content="Jobz Quest - Unlocking Endless Opportunities for Software Engineers/Developers" />
     <meta property="og:url" content="https://theritikchoure.github.io/JobzQuest" />
     <meta property="og:site_name" content="JobzQuest">
     <meta property="og:description"
@@ -54,9 +55,6 @@
         gtag('config', 'G-PJVNYXZ1BJ');
     </script>
 
-    <!-- Reference the manifest file; is must for PWA. -->
-    <link rel="manifest" href="/manifest.json" />
-
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./data/jobs.js"></script>
@@ -72,7 +70,10 @@
                 </path>
             </svg>
         </div>
-        <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <!-- <div class="flex-col items-center text-center pt-5 text-gray-300">
+            <button onclick="changeContent('bookmark')">Bookmark</button>
+        </div> -->
+        <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-6 lg:py-20">
             <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
                 <h2 class="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                     Jobz Quest
@@ -85,10 +86,11 @@
                     <input placeholder="Email" required type="text" id="EMAIL" name="EMAIL" autocomplete="off"
                         data-required="true"
                         class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 bg-transparent border-2 border-gray-400 rounded appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-200 focus:outline-none focus:shadow-outline" />
-                        <select data-te-select-init class="px-1 h-12 md:mr-2 mb-3 w-full md:w-28 md:mt-3" name="PREFERENCE" id="PREFERENCE">
-                            <option value="1">Jobs</option>
-                            <option value="2">Internships</option>
-                          </select>
+                    <select data-te-select-init class="px-1 h-12 md:mr-2 mb-3 w-full md:w-28 md:mt-3" name="PREFERENCE"
+                        id="PREFERENCE">
+                        <option value="1">Jobs</option>
+                        <option value="2">Internships</option>
+                    </select>
                     <button type="submit"
                         class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none">
                         Subscribe
@@ -116,6 +118,19 @@
     </div>
 
     <div class="main px-5 py-5 lg:py-16 lg:px-56" id="listings">
+        <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16 md:mb-10" method="GET" id="search-form">
+            <input placeholder="Enter skill (one skill at a time)(eg. nodejs/python)" required type="text" id="skill" name="skill" autocomplete="off"
+                data-required="true"
+                class="flex-grow w-full h-12 px-4 mb-3 text-black transition duration-200 bg-transparent border-2 border-gray-400 rounded appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-200 focus:outline-none focus:shadow-outline" />
+            <button type="submit"
+                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none">
+                Search
+            </button>
+            <button type="reset"
+                class="inline-flex items-center justify-center w-full h-12 px-6 mt-2 md:mt-0 md:ml-2 font-medium tracking-wide text-purple-400 transition duration-200 rounded shadow-md md:w-auto bg-transparent hover:bg-purple-700 hover:text-white border-2 border-purple-400 focus:shadow-outline focus:outline-none">
+                Reset
+            </button>
+        </form>
         <h2 class="text-center text-4xl mb-10" id="listing-heading">Latest Jobs</h2>
         <div class="loader hidden flex items-center justify-center mx-auto" id="loader"></div>
     </div>
@@ -148,7 +163,7 @@
                 </div>
                 <div class="space-y-4">
                     <h3 class="uppercase dark:text-gray-50">Developers/Legal</h3>
-                    <ul class="space-y-1">
+                    <ul class="space-y-1 leading-8">
                         <li>
                             <a rel="noopener noreferrer"
                                 href="https://github.com/theritikchoure/JobzQuest/blob/main/CONTRIBUTING.md"
@@ -168,6 +183,9 @@
                             <a rel="noopener noreferrer"
                                 href="https://github.com/theritikchoure/JobzQuest/issues/new?assignees=&labels=via+page+report%2Cneeds+triage&template=page-report.yml"
                                 target="_blank">Report an issue</a>
+                        </li>
+                        <li>
+                            <a rel="noopener noreferrer" href="./privacy-policy.html" target="_blank">Privacy policy</a>
                         </li>
                     </ul>
                 </div>
@@ -213,7 +231,6 @@
     </section>
 
     <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/pwa-handler.js"></script>
 </body>
 
 </html>

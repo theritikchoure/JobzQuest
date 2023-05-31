@@ -72,7 +72,7 @@ window.onload = async () => {
     let contentType = localStorage.getItem('content');
 
     if (location.hash !== '') {
-        contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
+        if (!location.hash.includes('#listings')) contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
     }
 
     await changeContent(contentType);
@@ -90,7 +90,7 @@ window.onload = async () => {
     }
 }
 
-const changeContent = async (type = 'jobs') => {
+const changeContent = async (type = 'jobs', skill = null) => {
     localStorage.setItem('content', type);
     let formPreference = document.getElementById('PREFERENCE');
     formPreference.value = type === 'internships' ? '2' : '1';
@@ -112,23 +112,73 @@ const changeContent = async (type = 'jobs') => {
         let str = '';
         let id = internshipsData.length;
 
-        internshipsData.forEach((job) => {
-            str += jobsContentHtml(job, id--);
+        let filteredInternships = internshipsData.filter((job) => {
+            if (skill) {
+                return job.tags.find((tag) => tag.toLocaleLowerCase() === skill.toLocaleLowerCase());
+            }
         })
 
+        if (skill && filteredInternships.length > 0) {
+            filteredInternships.forEach((job) => {
+                if (skill) {
+                    str += jobsContentHtml(job, id--);
+                } else {
+                    str += jobsContentHtml(job, id--);
+                }
+            })
+
+            listingHeading.innerText = `Latest Internships with #${skill} skill`;
+        } else {
+            if (skill && filteredInternships.length === 0) {
+                alert('No internships found for this skill. Showing all internships.')
+            }
+
+            internshipsData.forEach((job) => {
+                if (skill) {
+                    str += jobsContentHtml(job, id--);
+                } else {
+                    str += jobsContentHtml(job, id--);
+                }
+            })
+
+            listingHeading.innerText = 'Latest Internships';
+        }
+
         listings.insertAdjacentHTML('beforeend', str);
-        listingHeading.innerText = 'Latest Internships';
     } else {
         console.log(type)
         let str = '';
         let id = jobsData.length;
 
-        jobsData.forEach((job) => {
-            str += jobsContentHtml(job, id--);
+        let filteredJobs = jobsData.filter((job) => {
+            if (skill) {
+                return job.tags.find((tag) => tag.toLocaleLowerCase() === skill.toLocaleLowerCase());
+            }
         })
 
+        if (skill && filteredJobs.length > 0) {
+            filteredJobs.forEach((job) => {
+                if (skill) {
+                    str += jobsContentHtml(job, id--);
+                } else {
+                    str += jobsContentHtml(job, id--);
+                }
+            })
+
+            listingHeading.innerText = `Latest Jobs with #${skill} skill`;
+        } else {
+            if (skill && filteredJobs.length === 0) {
+                alert('No jobs found for this skill. Showing all jobs.')
+            }
+
+            jobsData.forEach((job) => {
+                str += jobsContentHtml(job, id--);
+            })
+
+            listingHeading.innerText = 'Latest Jobs';
+        }
+
         listings.insertAdjacentHTML('beforeend', str);
-        listingHeading.innerText = 'Latest Jobs';
     }
 
     loader.classList.toggle('hidden');
@@ -168,3 +218,18 @@ async function copyToClipboard(text) {
     await navigator.clipboard.writeText(text);
     alert("Copied to clipboard")
 }
+
+const searchForm = document.getElementById('search-form');
+
+searchForm.addEventListener('submit', (event) => {
+    let contentType = localStorage.getItem('content');
+    let skill = searchForm['skill'];
+    event.preventDefault();
+    changeContent(contentType, skill.value);
+});
+
+searchForm.addEventListener('reset', (event) => {
+    event.preventDefault();
+    searchForm['skill'].value = '';
+    changeContent(localStorage.getItem('content'), null);
+})
