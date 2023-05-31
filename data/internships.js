@@ -8,7 +8,7 @@ const internshipsData = [
     // }, 
     {
         role: 'Accelerate Intern - 2023 (Java)',
-        company: 'Zeta',
+        company: 'NatWest',
         tags: ['Java'],
         apply_link: 'https://jobs.natwestgroup.com/jobs/12804517-accelerate-intern-2023-java',
         posted_date: "31/05/2023",
