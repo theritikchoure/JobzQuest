@@ -7,6 +7,27 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Big Data Engineer',
+        company: 'IBM',
+        tags: ['Python', 'Apache spark'],
+        apply_link: 'https://bnymellon.eightfold.ai/careers/job?pid=14036930&location=India&recommended=1',
+        posted_date: "31/05/2023",
+    },
+    {
+        role: 'Software Developer India',
+        company: 'BNY Mellon',
+        tags: [],
+        apply_link: 'https://bnymellon.eightfold.ai/careers/job?pid=14036930&location=India&recommended=1',
+        posted_date: "31/05/2023",
+    },
+    {
+        role: 'Software Developer',
+        company: 'Zoho',
+        tags: [],
+        apply_link: 'https://www.zoho.com/careers/jobdetails/?job_id=2803000614929615',
+        posted_date: "31/05/2023",
+    },
+    {
         role: 'Software Engineer',
         company: 'Clearfeed',
         tags: ['Javascript', 'Nodejs', 'Typescript', 'SQL/NoSQL', 'NestJs', 'ExpressJs', 'DSA', 'Cloud'],

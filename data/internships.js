@@ -7,6 +7,20 @@ const internshipsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // }, 
     {
+        role: 'Accelerate Intern - 2023 (Java)',
+        company: 'Zeta',
+        tags: ['Java'],
+        apply_link: 'https://jobs.natwestgroup.com/jobs/12804517-accelerate-intern-2023-java',
+        posted_date: "31/05/2023",
+    },
+    {
+        role: 'Intern - SDE(Backend)',
+        company: 'Zeta',
+        tags: ['Java', 'Sprint boot', 'AWS', 'Kafka'],
+        apply_link: 'https://jobs.lever.co/zeta/ed495581-7195-47bc-8cc4-3e1220730741',
+        posted_date: "31/05/2023",
+    },
+    {
         role: 'Associate Quality Engineer (Intern)',
         company: 'Finastra',
         tags: ['Java', 'Python', 'SQL'],
