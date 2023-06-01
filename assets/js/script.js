@@ -230,6 +230,7 @@ searchForm.addEventListener('submit', (event) => {
 
 searchForm.addEventListener('reset', (event) => {
     event.preventDefault();
+    if(searchForm['skill'].value === '') return;
     searchForm['skill'].value = '';
     changeContent(localStorage.getItem('content'), null);
 })
