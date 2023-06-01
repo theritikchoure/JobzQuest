@@ -7,6 +7,27 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Associate Engineer - Software Development',
+        company: 'Sutherland',
+        tags: ['C++', '.Net', 'SQL', 'Angular', 'Javascript'],
+        apply_link: 'https://jobs.smartrecruiters.com/Sutherland/743999908028953-associate-engineer-software-development',
+        posted_date: "01/06/2023",
+    },
+    {
+        role: 'Graduate Software Engineer',
+        company: 'Couchbase',
+        tags: ['Go', 'C', 'C++'],
+        apply_link: 'https://boards.greenhouse.io/couchbaseinc/jobs/4123130006',
+        posted_date: "01/06/2023",
+    },
+    {
+        role: 'Software Development Engineer-1 (SDE-1)',
+        company: 'SmartReach.io',
+        tags: ['DSA'],
+        apply_link: 'https://smartreach.freshteam.com/jobs/w1_Ja1fgAQES/copy-of-software-development-engineer-1-sde-1-j3',
+        posted_date: "01/06/2023",
+    },
+    {
         role: 'Big Data Engineer',
         company: 'IBM',
         tags: ['Python', 'Apache spark'],
