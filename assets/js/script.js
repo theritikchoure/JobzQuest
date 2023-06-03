@@ -9,32 +9,34 @@ const listingHeading = document.getElementById("listing-heading");
 const backToTopBtn = document.getElementById("btn-back-to-top");
 
 window.onload = async () => {
-    let contentType = localStorage.getItem('content');
+    let contentType = getItemFromLocalStorage('content'); // Get content type from local storage
 
+    // If url contains id of a job or internship, then change content type accordingly
     if (location.hash !== '') {
         if (!location.hash.includes('#listings')) contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
     }
 
-    await changeContent(contentType);
+    await changeContent(contentType); // Change content type
 
-    let cookieConsent = localStorage.getItem('cookie-accept');
+    let cookieConsent = getItemFromLocalStorage('cookie-accept'); // Get cookie consent from local storage
     if (JSON.parse(cookieConsent)) {
         cookieModal.classList.add('hidden');
     }
 
+    // if url contains id of a job or internship, then scroll to that job or internship
     if (location.hash !== '') {
         document.getElementById(location.hash.replace('#', '')).scrollIntoView();
     }
 }
 
-// When the user scrolls down 20px from the top of the document, show the button
+// When the user scrolls down 20px from the top of the document, show the bottom to top button
 window.onscroll = function () {
     scrollFunction();
 };
 
 // Job card html content generator
 const jobsContentHtml = (job, id) => {
-    let contentType = localStorage.getItem('content');
+    let contentType = getItemFromLocalStorage('content');
 
     contentType = contentType === 'internships' ? 'internship' : 'job';
 
@@ -96,7 +98,10 @@ const jobsContentHtml = (job, id) => {
 async function changeContent(type = 'jobs', skill = null) {
     let str = '';
     let headingText = '';
-    localStorage.setItem('content', type);
+    let jobs = [];
+    let id;
+
+    setItemToLocalStorage('content', type); // set content type to local storage
 
     // Set the job preference for subscribe form
     formPreference.value = type === 'internships' ? '2' : '1';
@@ -110,70 +115,49 @@ async function changeContent(type = 'jobs', skill = null) {
     }
 
     if (type === 'internships') {
-        let id = internshipsData.length;
+        id = internshipsData.length;
+        jobs = internshipsData;
+        headingText = 'Latest Internships';
 
-        let filteredInternships = internshipsData.filter((job) => {
-            if (skill) {
-                return job.tags.find((tag) => tag.toLocaleLowerCase() === skill.toLocaleLowerCase());
-            }
-        })
-
-        if (skill && filteredInternships.length > 0) {
-            filteredInternships.forEach((job) => {
+        if(skill) {
+            let filterInternships = internshipsData.filter((job) => {
                 if (skill) {
-                    str += jobsContentHtml(job, id--);
-                } else {
-                    str += jobsContentHtml(job, id--);
+                    return job.tags.find((tag) => tag.toLocaleLowerCase() === skill.toLocaleLowerCase());
                 }
             })
 
-            headingText = `Latest Internships with #${skill} skill`;
-        } else {
-            if (skill && filteredInternships.length === 0) {
-                alert('No internships found for this skill. Showing all internships.')
+            if(filterInternships.length > 0) {
+                headingText = `Latest Internships with #${skill} skill`;
+                jobs = filterInternships;
+            } else {
+                alert('No internship found for this skill. Showing all internships.');
             }
 
-            internshipsData.forEach((job) => {
-                if (skill) {
-                    str += jobsContentHtml(job, id--);
-                } else {
-                    str += jobsContentHtml(job, id--);
-                }
-            })
-
-            headingText = 'Latest Internships';
         }
-
     } else {
-        let id = jobsData.length;
+        id = jobsData.length;
+        jobs = jobsData;
+        headingText = 'Latest Jobs';
 
-        let filteredJobs = jobsData.filter((job) => {
-            if (skill) {
-                return job.tags.find((tag) => tag.toLocaleLowerCase() === skill.toLocaleLowerCase());
-            }
-        })
-
-        if (skill && filteredJobs.length > 0) {
-            filteredJobs.forEach((job) => {
+        if(skill) {
+            let filterJobs = jobsData.filter((job) => {
                 if (skill) {
-                    str += jobsContentHtml(job, id--);
+                    return job.tags.find((tag) => tag.toLocaleLowerCase() === skill.toLocaleLowerCase());
                 }
             })
 
-            headingText = `Latest Jobs with #${skill} skill`;
-        } else {
-            if (skill && filteredJobs.length === 0) {
+            if(filterJobs.length > 0) {
+                headingText = `Latest Jobs with #${skill} skill`;
+                jobs = filterJobs;
+            } else {
                 alert('No jobs found for this skill. Showing all jobs.');
             }
-
-            jobsData.forEach((job) => {
-                str += jobsContentHtml(job, id--);
-            })
-
-            headingText = 'Latest Jobs';
         }
-
     }
+
+    jobs.forEach((job) => {
+        str += jobsContentHtml(job, id--);
+    })
 
     listingHeading.innerText = headingText;
     listings.insertAdjacentHTML('beforeend', str); // Add all jobs card to the DOM 
@@ -182,7 +166,7 @@ async function changeContent(type = 'jobs', skill = null) {
 
 // Cookie accept handle function
 function cookieAccept() {
-    localStorage.setItem('cookie-accept', true);
+    setItemToLocalStorage('cookie-accept', true)
     cookieModal.classList.add('hidden');
 }
 
@@ -212,7 +196,7 @@ async function copyToClipboard(text) {
 
 // Search form submit event
 searchForm.addEventListener('submit', (event) => {
-    let contentType = localStorage.getItem('content');
+    let contentType = getItemFromLocalStorage('content');
     let skill = searchForm['skill'];
     event.preventDefault();
     changeContent(contentType, skill.value);
@@ -223,7 +207,7 @@ searchForm.addEventListener('reset', (event) => {
     event.preventDefault();
     if (searchForm['skill'].value === '') return;
     searchForm['skill'].value = '';
-    changeContent(localStorage.getItem('content'), null);
+    changeContent(getItemFromLocalStorage('content'), null);
 })
 
 // Generate random hex
@@ -234,4 +218,14 @@ function randHex() {
 // Generate random color
 function randColor() {
     return randHex() + "" + randHex() + "" + randHex();
+}
+
+// Get item from local storage
+function getItemFromLocalStorage(key) {
+    return localStorage.getItem(key);
+}
+
+// Set item to local storage
+function setItemToLocalStorage(key, value) {
+    return localStorage.setItem(key, value);
 }
