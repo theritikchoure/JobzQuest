@@ -8,6 +8,9 @@ const listings = document.getElementById("listings");
 const listingHeading = document.getElementById("listing-heading");
 const backToTopBtn = document.getElementById("btn-back-to-top");
 
+const listingsPerPage = 10; // Number of job listings to display per page
+let currentPage = 1; // Current page number
+
 window.onload = async () => {
     let contentType = getItemFromLocalStorage('content'); // Get content type from local storage
 
@@ -101,6 +104,11 @@ async function changeContent(type = 'jobs', skill = null) {
     let jobs = [];
     let id;
 
+    // Reset currentPage to 1 when switching content types
+    if (getItemFromLocalStorage('content') !== type) {
+        currentPage = 1;
+    }
+
     setItemToLocalStorage('content', type); // set content type to local storage
 
     // Set the job preference for subscribe form
@@ -155,13 +163,28 @@ async function changeContent(type = 'jobs', skill = null) {
         }
     }
 
-    jobs.forEach((job) => {
+    // Pagination logic
+    const totalPages = Math.ceil(jobs.length / listingsPerPage);
+    const startIndex = (currentPage - 1) * listingsPerPage;
+    const endIndex = startIndex + listingsPerPage;
+    const currentJobs = jobs.slice(startIndex, endIndex);
+
+    currentJobs.forEach((job) => {
         str += jobsContentHtml(job, id--);
-    })
+    });
 
     listingHeading.innerText = headingText;
-    listings.insertAdjacentHTML('beforeend', str); // Add all jobs card to the DOM 
+
+    var pagination = document.getElementById('pagination');
+    pagination.insertAdjacentHTML('beforebegin', str); // Add all jobs card to the DOM before the pagination element
     loader.classList.toggle('hidden'); // loading ends
+
+    var currentPageDisplay = document.getElementById('currentPage');
+    currentPageDisplay.innerText = currentPage;
+
+    // Update the pagination buttons
+    updatePaginationButtons(totalPages);
+
 }
 
 // Cookie accept handle function
@@ -229,3 +252,37 @@ function getItemFromLocalStorage(key) {
 function setItemToLocalStorage(key, value) {
     return localStorage.setItem(key, value);
 }
+
+// Function to update the pagination buttons
+function updatePaginationButtons(totalPages) {
+    const prevBtn = document.getElementById("prevPage");
+    const nextBtn = document.getElementById("nextPage");
+
+    // Show or hide the previous button based on the current page
+    if (currentPage === 1) {
+        prevBtn.disabled = true;
+    } else {
+        prevBtn.disabled = false;
+    }
+
+    // Show or hide the next button based on the current page
+    if (currentPage === totalPages) {
+        nextBtn.disabled = true;
+    } else {
+        nextBtn.disabled = false;
+    }
+}
+
+// Event listener for the prevPage button
+document.getElementById('prevPage').addEventListener('click', function() {
+    if (currentPage > 1) {
+        currentPage--;
+        changeContent(getItemFromLocalStorage('content'), null);
+    }
+});
+
+// Event listener for the nextPage button
+document.getElementById('nextPage').addEventListener('click', function() {
+    currentPage++;
+    changeContent(getItemFromLocalStorage('content'), null);
+});

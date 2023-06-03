@@ -133,6 +133,11 @@
         </form>
         <h2 class="text-center text-4xl mb-10" id="listing-heading">Latest Jobs</h2>
         <div class="loader hidden flex items-center justify-center mx-auto" id="loader"></div>
+        <div id="pagination" class="flex items-center justify-center mt-10">
+            <button id="prevPage" class="px-4 py-2 text-white bg-purple-400 rounded-l-md cursor-pointer disabled:opacity-50">Prev</button>
+            <span id="currentPage" class="px-4 py-2 font-bold">1</span>
+            <button id="nextPage" class="px-4 py-2 text-white bg-purple-400 rounded-r-md cursor-pointer disabled:opacity-50">Next</button>
+        </div>
     </div>
 
     <footer class="px-4 divide-y bg-gray-900 text-gray-100">
