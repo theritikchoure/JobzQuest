@@ -1,11 +1,38 @@
-function randHex() {
-    return (Math.floor(Math.random() * 56) + 200).toString(16);
+// Declare all the global variables here
+const searchForm = document.getElementById('search-form');
+const cookieModal = document.getElementById('cookie-modal');
+const cookieBtn = document.getElementById('cookie-accept');
+const loader = document.getElementById("loader");
+const formPreference = document.getElementById('PREFERENCE');
+const listings = document.getElementById("listings");
+const listingHeading = document.getElementById("listing-heading");
+const backToTopBtn = document.getElementById("btn-back-to-top");
+
+window.onload = async () => {
+    let contentType = localStorage.getItem('content');
+
+    if (location.hash !== '') {
+        if (!location.hash.includes('#listings')) contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
+    }
+
+    await changeContent(contentType);
+
+    let cookieConsent = localStorage.getItem('cookie-accept');
+    if (JSON.parse(cookieConsent)) {
+        cookieModal.classList.add('hidden');
+    }
+
+    if (location.hash !== '') {
+        document.getElementById(location.hash.replace('#', '')).scrollIntoView();
+    }
 }
 
-function randColor() {
-    return randHex() + "" + randHex() + "" + randHex();
-}
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+    scrollFunction();
+};
 
+// Job card html content generator
 const jobsContentHtml = (job, id) => {
     let contentType = localStorage.getItem('content');
 
@@ -64,40 +91,15 @@ const jobsContentHtml = (job, id) => {
     return content;
 }
 
-let cookieModal = document.getElementById('cookie-modal');
-let cookieBtn = document.getElementById('cookie-accept');
-
-
-window.onload = async () => {
-    let contentType = localStorage.getItem('content');
-
-    if (location.hash !== '') {
-        if (!location.hash.includes('#listings')) contentType = location.hash.includes('#internship') ? 'internships' : 'jobs';
-    }
-
-    await changeContent(contentType);
-
-    let cookieConsent = localStorage.getItem('cookie-accept');
-    if (JSON.parse(cookieConsent)) {
-        cookieModal.classList.add('hidden');
-    }
-
-    if (location.hash !== '') {
-        document.getElementById(location.hash.replace('#', '')).scrollIntoView();
-        // const myDiv = document.getElementById('myDiv');
-        // myDiv.scrollIntoView();
-        console.log(document.getElementById(location.hash.replace('#', '')))
-    }
-}
-
-const changeContent = async (type = 'jobs', skill = null) => {
+// Change content based on job type (jobs/internships), 
+// if skill is provided then filter based on that skill on selected job type (jobs/internships)
+async function changeContent(type = 'jobs', skill = null) {
+    let str = '';
+    let headingText = '';
     localStorage.setItem('content', type);
-    let formPreference = document.getElementById('PREFERENCE');
-    formPreference.value = type === 'internships' ? '2' : '1';
-    let listings = document.getElementById("listings");
-    let listingHeading = document.getElementById("listing-heading");
 
-    let loader = document.getElementById("loader");
+    // Set the job preference for subscribe form
+    formPreference.value = type === 'internships' ? '2' : '1';
 
     loader.classList.toggle('hidden'); // loading starts
 
@@ -108,8 +110,6 @@ const changeContent = async (type = 'jobs', skill = null) => {
     }
 
     if (type === 'internships') {
-        console.log(type)
-        let str = '';
         let id = internshipsData.length;
 
         let filteredInternships = internshipsData.filter((job) => {
@@ -127,7 +127,7 @@ const changeContent = async (type = 'jobs', skill = null) => {
                 }
             })
 
-            listingHeading.innerText = `Latest Internships with #${skill} skill`;
+            headingText = `Latest Internships with #${skill} skill`;
         } else {
             if (skill && filteredInternships.length === 0) {
                 alert('No internships found for this skill. Showing all internships.')
@@ -141,13 +141,10 @@ const changeContent = async (type = 'jobs', skill = null) => {
                 }
             })
 
-            listingHeading.innerText = 'Latest Internships';
+            headingText = 'Latest Internships';
         }
 
-        listings.insertAdjacentHTML('beforeend', str);
     } else {
-        console.log(type)
-        let str = '';
         let id = jobsData.length;
 
         let filteredJobs = jobsData.filter((job) => {
@@ -160,67 +157,60 @@ const changeContent = async (type = 'jobs', skill = null) => {
             filteredJobs.forEach((job) => {
                 if (skill) {
                     str += jobsContentHtml(job, id--);
-                } else {
-                    str += jobsContentHtml(job, id--);
                 }
             })
 
-            listingHeading.innerText = `Latest Jobs with #${skill} skill`;
+            headingText = `Latest Jobs with #${skill} skill`;
         } else {
             if (skill && filteredJobs.length === 0) {
-                alert('No jobs found for this skill. Showing all jobs.')
+                alert('No jobs found for this skill. Showing all jobs.');
             }
 
             jobsData.forEach((job) => {
                 str += jobsContentHtml(job, id--);
             })
 
-            listingHeading.innerText = 'Latest Jobs';
+            headingText = 'Latest Jobs';
         }
 
-        listings.insertAdjacentHTML('beforeend', str);
     }
 
-    loader.classList.toggle('hidden');
+    listingHeading.innerText = headingText;
+    listings.insertAdjacentHTML('beforeend', str); // Add all jobs card to the DOM 
+    loader.classList.toggle('hidden'); // loading ends
 }
 
-cookieBtn.onclick = function () {
+// Cookie accept handle function
+function cookieAccept() {
     localStorage.setItem('cookie-accept', true);
     cookieModal.classList.add('hidden');
 }
 
-let mybutton = document.getElementById("btn-back-to-top");
-
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-    scrollFunction();
-};
-
 function scrollFunction() {
     if (
         document.body.scrollTop > 20 ||
         document.documentElement.scrollTop > 20
     ) {
-        mybutton.style.display = "block";
+        backToTopBtn.style.display = "block";
     } else {
-        mybutton.style.display = "none";
+        backToTopBtn.style.display = "none";
     }
 }
-// When the user clicks on the button, scroll to the top of the document
-mybutton.addEventListener("click", backToTop);
 
+// When the user clicks on the button, scroll to the top of the document
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
 
+// Copy to clipboard 
 async function copyToClipboard(text) {
     await navigator.clipboard.writeText(text);
     alert("Copied to clipboard")
 }
 
-const searchForm = document.getElementById('search-form');
-
+// Search form submit event
 searchForm.addEventListener('submit', (event) => {
     let contentType = localStorage.getItem('content');
     let skill = searchForm['skill'];
@@ -228,9 +218,20 @@ searchForm.addEventListener('submit', (event) => {
     changeContent(contentType, skill.value);
 });
 
+// Search form reset event
 searchForm.addEventListener('reset', (event) => {
     event.preventDefault();
-    if(searchForm['skill'].value === '') return;
+    if (searchForm['skill'].value === '') return;
     searchForm['skill'].value = '';
     changeContent(localStorage.getItem('content'), null);
 })
+
+// Generate random hex
+function randHex() {
+    return (Math.floor(Math.random() * 56) + 200).toString(16);
+}
+
+// Generate random color
+function randColor() {
+    return randHex() + "" + randHex() + "" + randHex();
+}
