@@ -7,6 +7,13 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Associate Software Engineer',
+        company: 'Volvo',
+        tags: [],
+        apply_link: 'https://xjobs.brassring.com/TGnewUI/Search/home/HomeWithPreLoad?partnerid=25079&siteid=5171&PageType=JobDetails&jobid=762375',
+        posted_date: "03/06/2023",
+    },
+    {
         role: 'Associate Engineer - Software Development',
         company: 'Sutherland',
         tags: ['C++', '.Net', 'SQL', 'Angular', 'Javascript'],
