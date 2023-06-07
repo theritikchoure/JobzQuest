@@ -1,11 +1,18 @@
 const jobsData = [
-    // Don't remove this object, only capy and paste below it
+    // Don't remove this object, only copy and paste below it
     // {
     //     role: "Job title",
     //     company: "Company name",
     //     apply_link: "https://apply.link",
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
+    {
+        role: 'Software Engineer (L5), Node.js Platform',
+        company: 'Netflix',
+        tags: ["NodeJs"],
+        apply_link: 'https://jobs.netflix.com/jobs/279060739',
+        posted_date: "07/06/2023",
+    },
     {
         role: 'Associate Software Engineer',
         company: 'Volvo',
