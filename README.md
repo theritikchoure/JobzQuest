@@ -16,7 +16,13 @@ Here is an link of a JobzQuest https://theritikchoure.github.io/JobzQuest/
 JobzQuest is built using the following technologies:
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) - a just-in-time compiled programming language
-- [Tailwind CSS](https://tailwindcss.com/) - a utility-first CSS framework      
+- [Tailwind CSS](https://tailwindcss.com/) - a utility-first CSS framework  
+
+### Contribute
+- Star this GitHub repo ⭐
+- Post about it on your social media (Twitter / Blogs / Facebook / Instagram etc).
+- Create pull requests, submit bugs, suggest new features or documentation updates 🛠, To do so, go to [this page](https://github.com/theritikchoure/jobzquest/issues) and click the New issue button.
+   
 
 ## Join our Open-Source Community
 JobzQuest is an open-source project, driven by the collaborative efforts of developers like you. Contribute to the platform's growth and improvement by joining our vibrant community.
