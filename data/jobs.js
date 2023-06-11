@@ -7,6 +7,34 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Full Stack Developer',
+        company: 'Advenio',
+        tags: [ "Nodejs", "React", "Redux", "AWS"],
+        apply_link: 'https://wellfound.com/company/advenio-2/jobs/654662-full-stack-developer-mern-stack',
+        posted_date: "11/06/2023",
+    },
+    {
+        role: 'Node.js Developer',
+        company: 'Vonage',
+        tags: [ "Nodejs", "Mongodb", "SQL", "AWS"],
+        apply_link: 'https://www.hirist.com/j/affle-india-node-js-developer-awsmongodb-1198161.html',
+        posted_date: "11/06/2023",
+    },
+    {
+        role: 'Backend Developer (VCP Apps)',
+        company: 'Vonage',
+        tags: [ "Java", "Nodejs", "Mongodb", "Redis", "AWS"],
+        apply_link: 'https://boards.greenhouse.io/vonage/jobs/6644308002?adobe_mc=MCMID%3D02408406485458979789220680779370557994%7CMCORGID%3DA8833BC75245AF9E0A490D4D%2540AdobeOrg%7CTS%3D1685923200',
+        posted_date: "11/06/2023",
+    },
+    {
+        role: 'Backend Node.js Engineer',
+        company: 'Appfire Technologies',
+        tags: [ "Microservices", "C#", "ASP.NET Core", "Nodejs", "MSSQL", "Azure"],
+        apply_link: 'https://boards.greenhouse.io/embed/job_app?for=appfiretechnologiesllc&token=4195157005',
+        posted_date: "11/06/2023",
+    },
+    {
         role: 'Backend Engineer',
         company: 'Pay2 (PayPay)',
         tags: ["Java", "Kotlin", "Spring Boot"],
