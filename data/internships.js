@@ -7,6 +7,41 @@ const internshipsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // }, 
     {
+        role: 'Software Intern',
+        company: 'Sylndr',
+        tags: ["NodeJS", "NextJs", "Javascript"],
+        apply_link: 'https://jobs.lever.co/sylndr/d33f10ad-c614-4749-86ea-278d701955d0',
+        posted_date: "11/06/2023",
+    },
+    {
+        role: 'Software Engineer Intern',
+        company: 'Bimaplan',
+        tags: ["NodeJS", "ReactJs", "MERN", "MongoDb"],
+        apply_link: 'https://wellfound.com/company/bimaplan-2/jobs/2701632-software-engineer-intern',
+        posted_date: "11/06/2023",
+    },
+    {
+        role: 'Software Engineering Intern',
+        company: 'perfx',
+        tags: ['Rust', "NodeJS", "AWS"],
+        apply_link: 'https://wellfound.com/company/perfx-1/jobs/2699119-software-engineering-intern-cloud-based-5g-mobile-testing',
+        posted_date: "11/06/2023",
+    },
+    {
+        role: 'NodeJs Backend Developer Intern',
+        company: 'VCBay',
+        tags: ['Javascript', "NodeJS", "ExpressJs"],
+        apply_link: 'https://wellfound.com/company/vcbay-1/jobs/2697191-nodejs-backend-developer-intern',
+        posted_date: "11/06/2023",
+    },
+    {
+        role: 'Tech Intern',
+        company: 'Advenio',
+        tags: ['Javascript', "NodeJS", "DSA"],
+        apply_link: 'https://wellfound.com/company/advenio-2/jobs/654683-tech-intern-mern-stack',
+        posted_date: "11/06/2023",
+    },
+    {
         role: 'Accelerate Intern - 2023 (Java)',
         company: 'NatWest',
         tags: ['Java'],
