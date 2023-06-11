@@ -7,6 +7,13 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Backend Engineer',
+        company: 'Pay2 (PayPay)',
+        tags: ["Java", "Kotlin", "Spring Boot"],
+        apply_link: 'https://boards.greenhouse.io/pay2dc/jobs/4024283006',
+        posted_date: "11/06/2023",
+    },
+    {
         role: 'Software Engineer (L5), Node.js Platform',
         company: 'Netflix',
         tags: ["NodeJs"],
