@@ -7,6 +7,27 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Junior Full Stack Engineer',
+        company: 'Roambee',
+        tags: [ "HTML", "CSS", "JavaScript", "React", "IoT"],
+        apply_link: 'https://careers.roambee.com/jobs/Careers/42853000002102078/Junior-Full-Stack-Engineer?source=CareerSite',
+        posted_date: "18/06/2023",
+    },
+    {
+        role: 'Dot Net Developer',
+        company: 'UKG',
+        tags: [ "C#", ".Net", "SQL"],
+        apply_link: 'https://careers.ukg.com/careers/JobDetail/Dot-Net-Developer-Asp-Net-C-Web-API-SQL-Server-Javascript/45434',
+        posted_date: "18/06/2023",
+    },
+    {
+        role: 'Software Engineer (C#/C++ and Networking)',
+        company: 'Unisys',
+        tags: [ "C#", ".Net", "C++"],
+        apply_link: 'https://jobs.unisys.com/us/en/job/REQ544468/C-C-and-Networking',
+        posted_date: "18/06/2023",
+    },
+    {
         role: 'Full Stack Developer',
         company: 'Advenio',
         tags: [ "Nodejs", "React", "Redux", "AWS"],

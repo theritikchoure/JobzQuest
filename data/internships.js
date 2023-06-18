@@ -7,6 +7,13 @@ const internshipsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // }, 
     {
+        role: 'Intern-engineering',
+        company: 'Tower Research Capital',
+        tags: ["Python", "SQL", "Bash", "Linux", "Machine Learning"],
+        apply_link: 'https://www.tower-research.com/open-positions/?gh_jid=5054597',
+        posted_date: "18/06/2023",
+    },
+    {
         role: 'Software Intern',
         company: 'Sylndr',
         tags: ["NodeJS", "NextJs", "Javascript"],
