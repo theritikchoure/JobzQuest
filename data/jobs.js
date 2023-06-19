@@ -7,6 +7,27 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Software Engineer, Network',
+        company: 'Stripe',
+        tags: [ "Linux", "AWS", "Azure", "GCP" ],
+        apply_link: 'https://stripe.com/jobs/listing/software-engineer-network/4785686',
+        posted_date: "19/06/2023",
+    },
+    {
+        role: 'Software Engineer, Core Infrastructure',
+        company: 'Stripe',
+        tags: [ "Go", "Linux", "Kubernetes", "AWS", "Azure", "GCP", "Oracle Cloud", "NoSQL"],
+        apply_link: 'https://stripe.com/jobs/listing/software-engineer-core-infrastructure/4746577',
+        posted_date: "19/06/2023",
+    },
+    {
+        role: 'Backend / API Engineer',
+        company: 'Stripe',
+        tags: [ "Java", "Scala", "Ruby", "PostgreSQL"],
+        apply_link: 'https://stripe.com/jobs/listing/backend-api-engineer-revenue-foundations/5096945',
+        posted_date: "19/06/2023",
+    },
+    {
         role: 'Backend Developer',
         company: 'Cadeia',
         tags: [ "Typescript", "NestJs", "Rest", "PostgreSQL"],
