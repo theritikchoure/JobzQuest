@@ -7,6 +7,13 @@ const jobsData = [
     //     tags: ["Skill1", "skill2", "Skill3"]
     // },
     {
+        role: 'Backend Developer',
+        company: 'Cadeia',
+        tags: [ "Typescript", "NestJs", "Rest", "PostgreSQL"],
+        apply_link: 'https://join.com/companies/cadeia/8331048-backend-developer-javascript-remote-berlin?pid=d7cb2e8e859c62cd7f75',
+        posted_date: "19/06/2023",
+    },
+    {
         role: 'Junior Full Stack Engineer',
         company: 'Roambee',
         tags: [ "HTML", "CSS", "JavaScript", "React", "IoT"],
